@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Khammaghanni Kkes</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">The Khammaghanni Kkes</div>
+        <div class="nav-right">
+            <div class="cart-trigger" onclick="toggleCart()">
+                <span class="cart-icon">🛒</span>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Baked with Love</h1>
+            <p class="tagline">100% Eggless & Home-Baked</p>
+            <p class="sub-tagline">Customization & Assortment Available</p>
+            <button onclick="document.getElementById('menu-section').scrollIntoView({behavior: 'smooth'})" class="btn-hero">Order Now</button>
+        </div>
+    </header>
+
+    <main class="container" id="menu-section">
+        <h2 class="section-title">Our Menu</h2>
+        
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="bestseller">Best Sellers</button>
+            <button class="filter-btn" data-filter="basic">The Basic</button>
+            <button class="filter-btn" data-filter="authentic">The Authentic</button>
+            <button class="filter-btn" data-filter="drooling">The Drooling</button>
+            <button class="filter-btn" data-filter="treats">Small Bites</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+            
+            <div class="card basic" data-category="basic">
+                <h3>Vanilla</h3>
+                <p class="price"></p>
+                <button class="add-btn" onclick="addToCart('Vanilla', 500)">+ Add</button>
+            </div>
+            <div class="card basic" data-category="basic">
+                <h3>White Forest</h3>
+                <span class="badge">Best Seller</span>
+                <p class="price"></p>
+                <button class="add-btn" onclick="addToCart('White Forest', 600)">+ Add</button>
+            </div>
+            <div class="card basic" data-category="basic">
+                <h3>Chocolate Chips</h3>
+                <p class="price"></p>
+                <button class="add-btn" onclick="addToCart('Chocolate Chips', 550)">+ Add</button>
+            </div>
+
+            <div class="card authentic" data-category="authentic">
+                <h3>Rasmalaai</h3>
+                <span class="badge">Best Seller</span>
+                <p class="price"></p>
+                <button class="add-btn" onclick="addToCart('Rasmalaai', 850)">+ Add</button>
+            </div>
+            <div class="card authentic" data-category="authentic">
+                <h3>Gulab Jamun</h3>
+                <p class="price"></p>
+                <button class="add-btn" onclick="addToCart('Gulab Jamun', 800)">+ Add</button>
+            </div>
+             <div class="card authentic" data-category="authentic">
+                <h3>Kesar Pista</h3>
+                <p class="price"></p>
+                <button class="add-btn" onclick="addToCart('Kesar Pista', 850)">+ Add</button>
+            </div>
+
+            <div class="card drooling" data-category="drooling">
+                <h3>Truffle</h3>
+                <span class="badge">Best Seller</span>
+                <p class="price"></p>
+                <button class="add-btn" onclick="addToCart('Truffle', 750)">+ Add</button>
+            </div>
+            <div class="card drooling" data-category="drooling">
+                <h3>Nutella Marshmallow</h3>
+                <span class="badge">Best Seller</span>
+                <p class="price"></p>
+                <button class="add-btn" onclick="addToCart('Nutella Marshmallow', 900)">+ Add</button>
+            </div>
+            <div class="card drooling" data-category="drooling">
+                <h3>Ferrero Rocher</h3>
+                <p class="price"></p>
+                <button class="add-btn" onclick="addToCart('Ferrero Rocher', 950)">+ Add</button>
+            </div>
+            <div class="card drooling" data-category="drooling">
+                <h3>Red Velvet</h3>
+                <p class="price"></p>
+                <button class="add-btn" onclick="addToCart('Red Velvet', 800)">+ Add</button>
+            </div>
+
+            <div class="card treats" data-category="treats">
+                <h3>Pinata Cakes</h3>
+                <p class="price"></p>
+                <button class="add-btn" onclick="addToCart('Pinata Cake', 1200)">+ Add</button>
+            </div>
+             <div class="card treats" data-category="treats">
+                <h3>Hampers</h3>
+                <p class="price">Custom</p>
+                <button class="add-btn" onclick="addToCart('Hamper', 0)">+ Add</button>
+            </div>
+        </div>
+    </main>
+
+    <section class="insta-section">
+        <div class="insta-header">
+            <h2 class="section-title">Fresh from the Oven</h2>
+            <a href="https://www.instagram.com/thekhammaghannikkes/" target="_blank" class="follow-btn">
+                Follow @thekhammaghannikkes
+            </a>
+        </div>
+
+        <div class="insta-embed-grid">
+            
+            <div class="embed-container">
+                </div>
+
+            <div class="embed-container">
+                </div>
+
+            <div class="embed-container">
+                </div>
+
+        </div>
+    </section>
+
+    <div id="cart-overlay" class="cart-overlay hidden" onclick="toggleCart()"></div>
+    <div id="cart-modal" class="cart-modal hidden">
+        <div class="cart-header">
+            <h2>Your Order</h2>
+            <button class="close-btn" onclick="toggleCart()">×</button>
+        </div>
+        
+        <div id="cart-items">
+            <p class="empty-msg">Your cart is empty.</p>
+        </div>
+
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total Estimate:</span>
+                <span>₹<span id="cart-total">0</span></span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">
+                Order on Instagram ➤
+            </button>
+            <p class="note">Clicking order will copy your items. Paste them in the Instagram chat!</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 The Khammaghanni Kkes</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
